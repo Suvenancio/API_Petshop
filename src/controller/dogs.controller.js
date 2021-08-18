@@ -27,7 +27,7 @@ module.exports = (app,bd)=>{
         
         try{
             const body = req.body;
-            const infos = [body.RACA, body.FOTO, body.IDADE, body.NOME, body.GENERO, body.RUA,body.NUMERO,body.CIDADE, body.ESTADO,body.TELEFONE]
+            const infos = [body.RACA, body.FOTO, body.IDADE, body.NOME, body.GENERO, body.RUA, body.NUMERO, body.CIDADE,body.ESTADO,body.TELEFONE]
             const newDog = await DaoDogs.newDogs(infos)
 
             res.send(newDog)
@@ -46,11 +46,11 @@ module.exports = (app,bd)=>{
             res.json(e)
         }
     })
-    app.put('/pets/dogs/:ID', async (req,res)=>{
+    app.put('/pets/:dogs/:ID', async (req,res)=>{
         try{
             const id = req.params.ID
             const body = req.body
-            const infos = [body.RACA, body.FOTO, body.IDADE, body.NOME, body.GENERO, body.RUA,body.NUMERO,body.CIDADE, body.ESTADO,body.TELEFONE]
+            const infos = [body.RACA, body.FOTO, body.IDADE, body.NOME, body.GENERO, body.RUA, body.NUMERO, body.CIDADE,body.ESTADO,body.TELEFONE]
             const editarDog = await DaoDogs.editDogs(infos,id)
 
             res.json(editarDog)

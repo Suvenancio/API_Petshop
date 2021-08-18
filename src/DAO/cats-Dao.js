@@ -50,6 +50,19 @@ module.exports = class CatsDao{
             })
         })
     }
+    editCats(infos,id){
+        return new Promise((resolve,reject)=>{
+            const query = 'UPDATE CATS SET RACA = (?), FOTO = (?), IDADE = (?), NOME = (?), GENERO = (?), RUA = (?), NUMERO = (?), CIDADE = (?), ESTADO = (?), TELEFONE = (?) WHERE ID = (?)'
+            const parametros = [infos[0],infos[1],infos[2],infos[3],infos[4],infos[5],infos[6],infos[7],infos[8],infos[9], id]
+
+            this.bd.run(query,parametros, (e, response)=>{
+                if(e) reject(`Erro ao editar BD ${e}`)
+                else resolve('Cat alterado com sucesso')
+
+            })
+        })
+
+    }
     
 
 }
